@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-script-type" content="text/javascript">
+	<title>Styled Video Player with Subtitles - Mozilla</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+	<figure id="videoContainer" data-fullscreen="false" class="col-md-8 col-md-offset-2">
+
+		<video id="video" width="100%" height="auto" controls preload="metadata">
+			<source src="http://localhost:63342/diplom/server/video/cat_720.mp4" type="video/mp4">
+			<source src="../server/video/sintel-short.webm" type="video/webm">
+			<track label="English" kind="subtitles" srclang="en" src="http://localhost:63342/diplom/server/subtitles/vtt/sintel-en.vtt" default>
+			<track label="Deutsch" kind="subtitles" srclang="de" src="http://localhost:63342/diplom/server/subtitles/vtt/sintel-de.vtt">
+			<track label="Español" kind="subtitles" srclang="es" src=".http://localhost:63342/diplom/server/subtitles/vtt/sintel-es.vtt">
+			<track label="User" kind="subtitles" srclang="u" src="http://localhost:63342/diplom/server/subtitles/users/user.vtt">
+		</video>
+
+		<div id="video-controls" class="controls" data-state="hidden">
+			<button id="playpause" type="button" data-state="play" class=" btn btn-default glyphicon glyphicon-play col-md-1"><!--Play/Pause--></button>
+			<button id="stop" type="button" data-state="stop" class=" btn btn-default glyphicon glyphicon-stop col-md-1"><!--Stop--></button>
+			<div class="progress col-md-4">
+				<progress id="progress" class="progress-bar" value="0" min="0">
+					<span id="progress-bar" class="progress-bar"></span>
+				</progress>
+			</div>
+			<button id="mute" type="button" data-state="mute" class="btn btn-default glyphicon glyphicon-volume-up col-md-1"><!--Mute/Unmute--></button>
+			<button id="volinc" type="button" data-state="volup" class="btn btn-default glyphicon glyphicon-plus col-md-1"><!--Vol+--></button>
+			<button id="voldec" type="button" data-state="voldown" class="btn btn-default glyphicon glyphicon-minus col-md-1"><!--Vol--></button>
+			<button id="fs" type="button" data-state="go-fullscreen" class="btn btn-default glyphicon glyphicon-fullscreen col-md-1"><!--Fullscreen--></button>
+			<button id="subtitles" type="button" data-state="subtitles" class="btn btn-default glyphicon glyphicon-subtitles  col-md-1"><!--CC--></button>
+			<button id="settings" type="button" data-state="settings" class="btn btn-default glyphicon glyphicon-cog  col-md-1"><!--CC--></button>
+		</div>
+	
+		<div id="mainSettingsPanel">
+			
+				<div class="col-md-12 label animation animation-hide" id="settingsPanel">
+
+			<div class="row">
+				<div class="btn-group pull-left col-md-12">
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Аудио по умолчанию <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" id="audioSelect">
+			  
+			  </ul>
+			</div>
+			</div>
+			
+			<form enctype="multipart/form-data" action="http://localhost:100/subtitle" method="post">
+				<div class="row">
+				<div class="col-md-5 pull-left text-left fileUpload">
+					<label>Завантажини субтитри:</label> 
+					<div class="btn btn-default glyphicon glyphicon-upload">
+						<input  type="file" name="file" class="upload" />	
+					</div>
+				</div>
+				<div class="col-md-3 settings-align">
+					<label>Затримка(мс)</label>
+					<input type="text" name="delay" />
+				</div>
+				<div class="col-md-3 pull-right settings-align-btn">
+					<input type="submit" value="ОК" id="subtitles-submit" class="btn ntn-default" />
+				</div>
+				</div>
+			</form>
+			
+			<form enctype="multipart/form-data" action="http://localhost:100/audio" method="post">
+				<div class="row">
+				<div class="col-md-5 pull-left text-left fileUpload">
+
+					<label>Завантажини аудіо:</label> 
+					<div class="btn btn-default glyphicon glyphicon-upload">
+						<input  type="file" name="file" class="upload" />	
+					</div>
+				</div>
+				<div class="col-md-3 settings-align">
+					<label>Затримка(мс)</label>
+					<input type="text" name="delay" />
+				</div>
+				<div class="col-md-3 pull-right settings-align-btn">
+					<input type="submit" value="ОК" id="subtitles-submit" class="btn ntn-default" />
+				</div>
+				</div>
+			</form>
+
+			</div>
+
+		</div>
+		
+	</figure>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/vtt.js/lib/vtt.js"></script>
+	<script src="js/video-player.js"></script>
+</body>
+</html>

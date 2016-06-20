@@ -1,0 +1,74 @@
+doctype html
+html(lang='en-IE')
+   head
+      meta(charset='utf-8')
+      title Styled Video Player with Subtitles
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      link(rel='stylesheet', href='./public/css/styles.css')
+      link(rel='stylesheet', href='./node_modules/bootstrap/dist/css/bootstrap.css')
+   body
+      figure#videoContainer.col-md-8.col-md-offset-2(data-fullscreen='false')
+         video#video(width='100%', height='auto', controls='', preload='metadata')
+            source(src='./public/video/film.avi', type='video/avi')
+            source(src='./public/video/sintel-short.webm', type='video/webm')
+            track(label='English', kind='subtitles', srclang='en', src='./public/subtitles/vtt/sintel-en.vtt', default='')
+            track(label='Deutsch', kind='subtitles', srclang='de', src='./public/subtitles/vtt/sintel-de.vtt')
+            track(label='Español', kind='subtitles', srclang='es', src='./public/subtitles/vtt/sintel-es.vtt')
+            if userSubtitlePath
+               track(label='User', kind='subtitles', srclang='u', src='./uploads/#{userSubtitlePath}')
+         #video-controls.controls(data-state='hidden')
+            button#playpause.btn.btn-default.glyphicon.glyphicon-play.col-md-1(type='button', data-state='play')
+               // Play/Pause
+            button#stop.btn.btn-default.glyphicon.glyphicon-stop.col-md-1(type='button', data-state='stop')
+               // Stop
+            .progress.col-md-4
+               progress#progress.progress-bar(value='0', min='0')
+                  span#progress-bar.progress-bar
+            button#mute.btn.btn-default.glyphicon.glyphicon-volume-up.col-md-1(type='button', data-state='mute')
+               // Mute/Unmute
+            button#volinc.btn.btn-default.glyphicon.glyphicon-plus.col-md-1(type='button', data-state='volup')
+               // Vol+
+            button#voldec.btn.btn-default.glyphicon.glyphicon-minus.col-md-1(type='button', data-state='voldown')
+               // Vol
+            button#fs.btn.btn-default.glyphicon.glyphicon-fullscreen.col-md-1(type='button', data-state='go-fullscreen')
+               // Fullscreen
+            button#subtitles.btn.btn-default.glyphicon.glyphicon-subtitles.col-md-1(type='button', data-state='subtitles')
+               // CC
+            button#settings.btn.btn-default.glyphicon.glyphicon-cog.col-md-1(type='button', data-state='settings')
+               // CC
+         #mainSettingsPanel
+            #settingsPanel.col-md-12.label.animation.animation-hide
+               .row
+                  .btn-group.pull-left.col-md-12
+                     button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                        | Аудио по умолчанию
+                        span.caret
+                     ul#audioSelect.dropdown-menu
+               form(enctype='multipart/form-data', action='http://#{domain}/subtitle', method='post')
+                  .row
+                     .col-md-5.pull-left.text-left.fileUpload
+                        label Завантажини субтитри:
+                        .btn.btn-default.glyphicon.glyphicon-upload
+                           input.upload(type='file', name='file')
+                     .col-md-3.settings-align
+                        label Затримка(мс)
+                        input(type='text', name='delay')
+                     .col-md-3.pull-right.settings-align-btn
+                        input#subtitles-submit.btn.ntn-default(type='submit', value='ОК')
+               form(enctype='multipart/form-data', action='http://#{domain}/audio', method='post')
+                  .row
+                     .col-md-5.pull-left.text-left.fileUpload
+                        label Завантажини аудіо:
+                        .btn.btn-default.glyphicon.glyphicon-upload
+                           input.upload(type='file', name='file')
+                     .col-md-3.settings-align
+                        label Затримка(мс)
+                        input(type='text', name='delay')
+                     .col-md-3.pull-right.settings-align-btn
+                        input#subtitles-submit.btn.ntn-default(type='submit', value='ОК')
+      script(src='./node_modules/jquery/dist/jquery.min.js')
+      script(src='./node_modules/bootstrap/dist/js/bootstrap.min.js')
+      script(src='./node_modules/vtt.js/lib/vtt.js')
+      script(src='./public/js/video-player.js')
+
+

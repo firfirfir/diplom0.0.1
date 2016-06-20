@@ -1,0 +1,115 @@
+
+html {
+	background: url('../images/background.jpg');
+}
+
+#videoContainer {
+	margin-top: 1%;
+}
+
+#settingsPanel {
+	padding: 10px;
+	font-size: 12pt;
+}
+
+
+.subtitles-menu {
+	list-style: none;
+	position: absolute !important;
+	bottom: -35%;
+  z-index: 100;
+  background-color: rgba(192, 194, 208, 0.88);
+  width: 18%!important;
+}
+
+#progress {
+	width: 100%;	
+}
+
+div.progress {
+	margin-top: 1%;
+	background-color: transparent;
+}
+
+.btn.btn-default {
+	background-color: #C0C2D0;
+}
+
+.subtitles-button {
+	background-color: transparent;
+}
+
+.label {
+	background-color: rgba(157, 158, 165, 0.77);
+	color: #333;
+}
+
+.label * {
+	color: #E6E5F3;
+  font-family: monospace;
+}
+
+.label input {
+	color: #333;
+}
+
+.block {
+	margin: 20px auto;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    height: 35px;
+}
+
+.fileUpload input.upload {
+		position: absolute;
+		bottom: 0;
+		top: 0;
+		left: 0;
+		right: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+ input.time-stop {
+	height: 30px;
+  margin-top: calc(50% - 7px);
+  border-radius: 5px;
+}
+
+.settings-row {
+	line-height: 50px;
+}
+
+.submit {
+	margin-left: 75px;
+}
+
+.settings-align {
+	margin-top: 2%;
+}
+
+.settings-align-btn {
+	margin-top: 10px;
+}
+
+.settings-align-btn input {
+	margin-left: 20px;
+}
+
+.animation {
+	opacity: 1;
+	transition: all linear 0.5s;
+}
+
+.animation-hide {
+	opacity: 0;
+}
+
+#mainSettingsPanel {
+	position: relative;
+}
