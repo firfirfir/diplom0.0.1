@@ -9,8 +9,11 @@ html(lang='en-IE')
    body
       figure#videoContainer.col-md-8.col-md-offset-2(data-fullscreen='false')
          video#video(width='100%', height='auto', controls='', preload='metadata')
-            source(src='./public/video/film.avi', type='video/avi')
-            source(src='./public/video/sintel-short.webm', type='video/webm')
+            source(src='./public/video/cat_720.mp4', type='video/mp4')
+            source(src='./public/video/cat_480.mp4', type='video/mp4')
+            source(src='./public/video/cat_360.mp4', type='video/mp4')
+            source(src='./public/video/cat_240.3gp', type='video/3gp')
+            source(src='./public/video/cat_144.3gp', type='video/3gp')
             track(label='English', kind='subtitles', srclang='en', src='./public/subtitles/vtt/sintel-en.vtt', default='')
             track(label='Deutsch', kind='subtitles', srclang='de', src='./public/subtitles/vtt/sintel-de.vtt')
             track(label='Español', kind='subtitles', srclang='es', src='./public/subtitles/vtt/sintel-es.vtt')
@@ -41,7 +44,7 @@ html(lang='en-IE')
                .row
                   .btn-group.pull-left.col-md-12
                      button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                        | Аудио по умолчанию
+                        | Аудио за змовчуванням
                         span.caret
                      ul#audioSelect.dropdown-menu
                form(enctype='multipart/form-data', action='http://#{domain}/subtitle', method='post')
@@ -68,7 +71,6 @@ html(lang='en-IE')
                         input#subtitles-submit.btn.ntn-default(type='submit', value='ОК')
       script(src='./node_modules/jquery/dist/jquery.min.js')
       script(src='./node_modules/bootstrap/dist/js/bootstrap.min.js')
-      script(src='./node_modules/vtt.js/lib/vtt.js')
       script(src='./public/js/video-player.js')
 
 

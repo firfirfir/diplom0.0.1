@@ -12,11 +12,11 @@ if (supportsVideo) {
     var audios = [
         {
             name: '1',
-            path: "./public/audio/default/1.mp3",
+            path: "http://localhost:100/public/audio/default/1.mp3",
             delay: 0
         }, {
             name: '2',
-            path: "./public/audio/default/2.mp3",
+            path: "http://localhost:100/public/audio/default/2.mp3",
             delay: 0
         }
     ];
@@ -172,7 +172,6 @@ if (supportsVideo) {
 
         video.addEventListener('play', function () {
 
-            debugger
             if (video.currentTime == 0.325079) {
 
                 if(audios[index].delay >= 0) {
@@ -321,7 +320,6 @@ if (supportsVideo) {
 
         video.addEventListener('timeupdate', function () {
 
-            //debugger
             if (!progress.getAttribute('max')) progress.setAttribute('max', video.duration);
             progress.value = video.currentTime;
             progressBar.style.width = Math.floor((video.currentTime / video.duration) * 100) + '%';
@@ -330,7 +328,6 @@ if (supportsVideo) {
 
         progress.addEventListener('click', function (e) {
 
-            //debugger
             var pos = (e.pageX - (this.offsetLeft + this.offsetParent.offsetLeft + this.offsetParent.offsetParent.offsetLeft)) / this.offsetWidth;
             video.currentTime = pos * video.duration;
         });
